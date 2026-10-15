@@ -1,0 +1,149 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.221
+A player moves through a game.
+
+2
+00:00:02.221 --> 00:00:03.933
+A car follows a road.
+
+3
+00:00:03.933 --> 00:00:06.135
+A robot reaches for an object.
+
+4
+00:00:06.135 --> 00:00:09.377
+Can these different worlds share one action interface?
+
+5
+00:00:09.377 --> 00:00:13.153
+Meet OneLA: Learning Many Worlds from Latent Actions.
+
+6
+00:00:14.283 --> 00:00:19.319
+Control interfaces differ across domains, and action labels are often scarce.
+
+7
+00:00:19.319 --> 00:00:22.223
+Video offers abundant examples of change.
+
+8
+00:00:22.223 --> 00:00:28.784
+The challenge is to capture transition structure across differences in appearance, embodiment, and dynamics.
+
+9
+00:00:29.917 --> 00:00:39.751
+OneLA learns from one point seven nine million video clips, covering games, navigation, driving, human interactions, and robot manipulation.
+
+10
+00:00:39.751 --> 00:00:45.523
+During latent action pretraining, every source shares one objective, without action labels.
+
+11
+00:00:46.650 --> 00:00:52.615
+Given two frames, a latent action model infers a thirty two dimensional transition vector.
+
+12
+00:00:52.615 --> 00:01:00.327
+A decoder uses this vector and the current frame to reconstruct the next, connecting the representation to observed change.
+
+13
+00:01:01.450 --> 00:01:06.721
+A learned orthogonal dictionary turns these coefficients into a transition embedding.
+
+14
+00:01:06.721 --> 00:01:10.775
+Its geometry keeps directions distinct and fixes their scale.
+
+15
+00:01:10.775 --> 00:01:13.211
+It does not assign semantic labels.
+
+16
+00:01:13.211 --> 00:01:17.374
+Prediction, information limits, and sparsity guide learning together.
+
+17
+00:01:18.483 --> 00:01:21.451
+The pretrained latent action model is frozen.
+
+18
+00:01:21.451 --> 00:01:27.233
+Lightweight adapters map native commands into the same space using labeled trajectories.
+
+19
+00:01:27.233 --> 00:01:32.845
+Two control routes emerge: actions inferred from video, and actions mapped from commands.
+
+20
+00:01:33.950 --> 00:01:39.424
+The world model combines latent actions with the initial frame to generate future video.
+
+21
+00:01:39.424 --> 00:01:47.158
+Training jointly predicts video and realized transition actions, using the frozen latent action model for action targets.
+
+22
+00:01:48.283 --> 00:01:53.747
+Here are selected generated rollouts across navigation, driving, and manipulation.
+
+23
+00:01:53.747 --> 00:01:57.139
+They illustrate control through the shared latent interface.
+
+24
+00:01:57.139 --> 00:02:04.767
+In quantitative benchmarks, the same trained video backbone and latent action space are used across control interfaces.
+
+25
+00:02:05.883 --> 00:02:09.981
+Two more driving rollouts show how the road scene evolves over time.
+
+26
+00:02:09.981 --> 00:02:13.299
+Watch the changing perspective and surrounding traffic.
+
+27
+00:02:17.883 --> 00:02:20.851
+Here are two more robot manipulation rollouts.
+
+28
+00:02:20.851 --> 00:02:24.586
+Watch the arm and gripper move as the interaction unfolds.
+
+29
+00:02:29.883 --> 00:02:32.746
+Video can also provide the action sequence.
+
+30
+00:02:32.746 --> 00:02:36.173
+These examples transfer source motion into a new scene.
+
+31
+00:02:36.173 --> 00:02:44.206
+Across forty transfer cycles, OneLA reduces rotation error by twenty four point eight percent relative to OLaF.
+
+32
+00:02:45.317 --> 00:02:49.670
+Frozen representations improve action readout across domains.
+
+33
+00:02:49.670 --> 00:02:57.755
+Video prediction achieves the lowest motion errors on MIND and the highest PSNR and SSIM on nuScenes.
+
+34
+00:02:57.755 --> 00:03:00.041
+On RT-1, it ranks second.
+
+35
+00:03:01.150 --> 00:03:10.207
+In a controlled training comparison, latent actions for unlabeled videos raise the real scene preference score by twenty point five percent.
+
+36
+00:03:10.207 --> 00:03:17.173
+Separately, the action prediction loss reduces human verified collisions from thirty six to twenty two percent.
+
+37
+00:03:18.283 --> 00:03:30.497
+OneLA brings diverse videos and native commands into a shared latent action interface, suggesting a path toward world models that learn across domains and support flexible control.

@@ -1,0 +1,18 @@
+node_modules/
+.cache/
+dist/
+.DS_Store
+
+# Local configuration and review artifacts
+.env
+.env.*
+.npmrc
+*.pem
+*.key
+*.log
+*.bak
+*.orig
+qa/
+audit/
+SOURCES.md
+PRIVATE-SOURCES.md

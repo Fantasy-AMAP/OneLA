@@ -1,0 +1,16 @@
+{
+  "name": "one-la-project-page",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "build": "node build.mjs",
+    "preview": "node server.mjs --dist",
+    "check": "node --check app.js && node --check server.mjs && node --check build.mjs && node --check public-files.mjs",
+    "test": "node tests/release.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.0"
+  }
+}
